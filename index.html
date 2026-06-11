@@ -4,27 +4,29 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Alex Muñoz-Craig</title>
-  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet" />
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
     :root {
-      --black: #0a0a0a;
-      --white: #f5f4f0;
-      --accent: #2563ff;
-      --accent-dim: #dce8ff;
-      --mid: #6b6b6b;
-      --border: #d4d2cc;
+      --bg:      #111111;
+      --bg2:     #1a1a1a;
+      --bg3:     #222222;
+      --border:  #333333;
+      --border2: #444444;
+      --text:    #e8e8e4;
+      --muted:   #888884;
+      --dim:     #555552;
+      --white:   #f0efe9;
       --mono: 'Space Mono', monospace;
       --sans: 'Space Grotesk', sans-serif;
     }
 
     html { scroll-behavior: smooth; }
-
     body {
       font-family: var(--sans);
-      background: var(--white);
-      color: var(--black);
+      background: var(--bg);
+      color: var(--text);
       line-height: 1.6;
     }
 
@@ -32,343 +34,344 @@
     nav {
       position: sticky; top: 0; z-index: 100;
       display: flex; align-items: center; justify-content: space-between;
-      padding: 1rem 2.5rem;
-      background: var(--white);
-      border-bottom: 1.5px solid var(--black);
+      padding: 0.9rem 2.5rem;
+      background: var(--bg);
+      border-bottom: 1.5px solid var(--border);
     }
     .nav-logo {
       font-family: var(--mono);
-      font-size: 0.85rem;
+      font-size: 0.82rem;
       font-weight: 700;
-      letter-spacing: 0.05em;
+      letter-spacing: 0.06em;
       text-decoration: none;
-      color: var(--black);
+      color: var(--white);
+      border: 1.5px solid var(--border2);
+      padding: 0.3rem 0.7rem;
     }
     .nav-links { display: flex; gap: 2rem; list-style: none; }
     .nav-links a {
-      font-size: 0.85rem;
+      font-size: 0.82rem;
       font-weight: 500;
       text-decoration: none;
-      color: var(--black);
-      letter-spacing: 0.04em;
-      transition: color 0.2s;
+      color: var(--muted);
+      letter-spacing: 0.05em;
+      transition: color 0.15s;
     }
-    .nav-links a:hover { color: var(--accent); }
+    .nav-links a:hover { color: var(--white); }
 
     /* ── HERO ── */
     .hero {
       display: grid;
       grid-template-columns: 1fr 1fr;
-      min-height: 90vh;
-      border-bottom: 1.5px solid var(--black);
+      min-height: 88vh;
+      border-bottom: 1.5px solid var(--border);
     }
-    .hero-text {
+    .hero-left {
       padding: 5rem 3rem 4rem 2.5rem;
       display: flex;
       flex-direction: column;
       justify-content: center;
-      border-right: 1.5px solid var(--black);
+      border-right: 1.5px solid var(--border);
     }
     .hero-eyebrow {
       font-family: var(--mono);
-      font-size: 0.75rem;
-      letter-spacing: 0.12em;
+      font-size: 0.72rem;
+      letter-spacing: 0.14em;
       text-transform: uppercase;
-      color: var(--accent);
-      margin-bottom: 1.25rem;
-    }
-    .hero-name {
-      font-size: clamp(3rem, 6vw, 5.5rem);
-      font-weight: 700;
-      line-height: 1.0;
-      letter-spacing: -0.02em;
+      color: var(--muted);
       margin-bottom: 1.5rem;
     }
-    .hero-name span { color: var(--accent); }
+    h1 {
+      font-size: clamp(3.2rem, 6vw, 5.8rem);
+      font-weight: 700;
+      line-height: 1.0;
+      letter-spacing: -0.025em;
+      color: var(--white);
+      margin-bottom: 1.75rem;
+    }
     .hero-sub {
-      font-size: 1.1rem;
-      color: var(--mid);
-      max-width: 400px;
-      margin-bottom: 2.5rem;
-      line-height: 1.7;
+      font-size: 1rem;
+      color: var(--muted);
+      max-width: 380px;
+      margin-bottom: 3rem;
+      line-height: 1.75;
     }
     .hero-cta-row { display: flex; gap: 1rem; flex-wrap: wrap; }
     .btn {
       display: inline-block;
-      padding: 0.75rem 1.5rem;
+      padding: 0.7rem 1.4rem;
       font-family: var(--mono);
-      font-size: 0.8rem;
+      font-size: 0.75rem;
       font-weight: 700;
       letter-spacing: 0.06em;
       text-decoration: none;
-      border: 1.5px solid var(--black);
-      transition: background 0.2s, color 0.2s;
+      border: 1.5px solid var(--border2);
+      color: var(--text);
+      background: transparent;
+      transition: background 0.15s, color 0.15s, border-color 0.15s;
       cursor: pointer;
     }
-    .btn-primary { background: var(--black); color: var(--white); }
-    .btn-primary:hover { background: var(--accent); border-color: var(--accent); }
-    .btn-outline { background: transparent; color: var(--black); }
-    .btn-outline:hover { background: var(--black); color: var(--white); }
+    .btn-primary { background: var(--white); color: #111; border-color: var(--white); }
+    .btn-primary:hover { background: var(--muted); border-color: var(--muted); color: #111; }
+    .btn-outline:hover { background: var(--border); color: var(--white); }
 
     .hero-right {
       display: flex;
       flex-direction: column;
       justify-content: flex-end;
       padding: 3rem 2.5rem;
-      background: var(--black);
-      color: var(--white);
-      position: relative;
-      overflow: hidden;
+      background: var(--bg2);
     }
     .hero-stats {
       display: grid;
       grid-template-columns: 1fr 1fr;
-      gap: 2px;
-      margin-bottom: 2rem;
+      gap: 1px;
+      background: var(--border);
+      border: 1.5px solid var(--border);
+      margin-bottom: 1.5rem;
     }
     .stat-card {
-      background: #161616;
+      background: var(--bg2);
       padding: 1.5rem;
-      border: 1px solid #2a2a2a;
     }
     .stat-num {
       font-family: var(--mono);
-      font-size: 2.2rem;
+      font-size: 2rem;
       font-weight: 700;
-      color: var(--accent);
+      color: var(--white);
       line-height: 1;
-      margin-bottom: 0.4rem;
+      margin-bottom: 0.35rem;
     }
     .stat-label {
-      font-size: 0.75rem;
-      color: #888;
-      letter-spacing: 0.06em;
+      font-size: 0.72rem;
+      color: var(--dim);
+      letter-spacing: 0.07em;
       text-transform: uppercase;
     }
     .hero-location {
       font-family: var(--mono);
-      font-size: 0.75rem;
-      color: #555;
-      letter-spacing: 0.08em;
+      font-size: 0.72rem;
+      color: var(--dim);
+      letter-spacing: 0.07em;
+      border-top: 1px solid var(--border);
+      padding-top: 1rem;
     }
-    .hero-location span { color: var(--accent); }
 
-    /* ── QUICK LINKS ── */
+    /* ── QUICK LINKS BAR ── */
     .quick-links {
       display: grid;
       grid-template-columns: repeat(4, 1fr);
-      border-bottom: 1.5px solid var(--black);
+      border-bottom: 1.5px solid var(--border);
+      background: var(--bg2);
     }
     .quick-link {
       display: flex;
       align-items: center;
       justify-content: space-between;
-      padding: 1.1rem 1.5rem;
+      padding: 1rem 1.5rem;
       text-decoration: none;
-      color: var(--black);
+      color: var(--muted);
       font-weight: 600;
-      font-size: 0.9rem;
-      border-right: 1.5px solid var(--black);
-      background: var(--white);
-      transition: background 0.2s, color 0.2s;
+      font-size: 0.85rem;
+      border-right: 1.5px solid var(--border);
+      transition: background 0.15s, color 0.15s;
     }
     .quick-link:last-child { border-right: none; }
-    .quick-link:hover { background: var(--black); color: var(--white); }
-    .quick-link .arrow { font-size: 1rem; }
+    .quick-link:hover { background: var(--border); color: var(--white); }
 
     /* ── SECTION COMMON ── */
     section { padding: 5rem 2.5rem; }
     .section-label {
       font-family: var(--mono);
-      font-size: 0.7rem;
+      font-size: 0.68rem;
       letter-spacing: 0.15em;
       text-transform: uppercase;
-      color: var(--accent);
+      color: var(--dim);
       margin-bottom: 0.5rem;
     }
     .section-title {
       font-size: clamp(2rem, 4vw, 3rem);
       font-weight: 700;
       letter-spacing: -0.02em;
+      color: var(--white);
       margin-bottom: 3rem;
     }
 
     /* ── EXPERIENCE ── */
-    #experience { background: var(--black); color: var(--white); }
-    #experience .section-title { color: var(--white); }
-    .exp-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 2px; }
+    #experience { background: var(--bg); border-bottom: 1.5px solid var(--border); }
+    .exp-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1px; background: var(--border); border: 1.5px solid var(--border); }
     .exp-card {
-      background: #111;
+      background: var(--bg2);
       padding: 2rem;
-      border: 1px solid #222;
-      position: relative;
-      transition: border-color 0.2s;
+      transition: background 0.15s;
     }
-    .exp-card:hover { border-color: var(--accent); }
+    .exp-card:hover { background: var(--bg3); }
     .exp-tag {
       display: inline-block;
       font-family: var(--mono);
-      font-size: 0.65rem;
+      font-size: 0.62rem;
       letter-spacing: 0.1em;
       text-transform: uppercase;
-      padding: 0.25rem 0.6rem;
-      background: var(--accent);
-      color: var(--white);
+      padding: 0.2rem 0.55rem;
+      border: 1px solid var(--border2);
+      color: var(--muted);
       margin-bottom: 1rem;
     }
-    .exp-org { font-size: 1.2rem; font-weight: 700; margin-bottom: 0.25rem; }
+    .exp-org { font-size: 1.1rem; font-weight: 700; color: var(--white); margin-bottom: 0.2rem; }
     .exp-role {
       font-family: var(--mono);
-      font-size: 0.75rem;
-      color: #888;
+      font-size: 0.7rem;
+      color: var(--dim);
       margin-bottom: 1.25rem;
     }
     .exp-bullets { list-style: none; }
     .exp-bullets li {
-      font-size: 0.88rem;
-      color: #bbb;
-      padding: 0.3rem 0;
-      padding-left: 1rem;
+      font-size: 0.85rem;
+      color: var(--muted);
+      padding: 0.3rem 0 0.3rem 1.1rem;
       position: relative;
       line-height: 1.5;
     }
-    .exp-bullets li::before {
-      content: '—';
-      position: absolute; left: 0;
-      color: var(--accent);
+    .exp-bullets li::before { content: '—'; position: absolute; left: 0; color: var(--dim); }
+
+    /* ── PROJECTS ── */
+    #projects { background: var(--bg2); border-bottom: 1.5px solid var(--border); }
+    .proj-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; }
+    .proj-card {
+      border: 1.5px solid var(--border);
+      background: var(--bg);
+      overflow: hidden;
     }
+    .proj-bar {
+      background: var(--bg3);
+      padding: 0.55rem 1rem;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      border-bottom: 1px solid var(--border);
+    }
+    .dot { width: 9px; height: 9px; border-radius: 50%; background: var(--border2); }
+    .proj-filename {
+      margin-left: auto;
+      font-family: var(--mono);
+      font-size: 0.62rem;
+      color: var(--dim);
+    }
+    .proj-body { padding: 1.75rem; }
+    .proj-title { font-size: 1.1rem; font-weight: 700; color: var(--white); margin-bottom: 0.5rem; }
+    .proj-lang {
+      display: inline-block;
+      font-family: var(--mono);
+      font-size: 0.62rem;
+      padding: 0.2rem 0.5rem;
+      border: 1px solid var(--border2);
+      color: var(--muted);
+      margin-bottom: 1rem;
+      letter-spacing: 0.06em;
+    }
+    .proj-desc { font-size: 0.85rem; color: var(--muted); line-height: 1.7; margin-bottom: 1.25rem; }
+    .proj-link {
+      font-family: var(--mono);
+      font-size: 0.72rem;
+      font-weight: 700;
+      text-decoration: none;
+      color: var(--text);
+      border-bottom: 1px solid var(--border2);
+      padding-bottom: 1px;
+      transition: color 0.15s, border-color 0.15s;
+    }
+    .proj-link:hover { color: var(--white); border-color: var(--muted); }
 
     /* ── SKILLS ── */
-    #skills { border-bottom: 1.5px solid var(--black); }
+    #skills { background: var(--bg); border-bottom: 1.5px solid var(--border); }
     .skills-layout { display: grid; grid-template-columns: 1fr 2fr; gap: 4rem; }
-    .skills-intro { font-size: 1rem; color: var(--mid); line-height: 1.8; }
+    .skills-intro { font-size: 0.95rem; color: var(--muted); line-height: 1.85; }
     .skill-groups { display: flex; flex-direction: column; gap: 2rem; }
     .skill-group-title {
       font-family: var(--mono);
-      font-size: 0.7rem;
-      letter-spacing: 0.12em;
+      font-size: 0.66rem;
+      letter-spacing: 0.13em;
       text-transform: uppercase;
-      color: var(--mid);
-      margin-bottom: 0.75rem;
+      color: var(--dim);
+      margin-bottom: 0.6rem;
     }
     .skill-pills { display: flex; flex-wrap: wrap; gap: 0.5rem; }
     .pill {
       font-family: var(--mono);
-      font-size: 0.78rem;
-      padding: 0.4rem 0.9rem;
-      border: 1.5px solid var(--black);
+      font-size: 0.75rem;
+      padding: 0.35rem 0.85rem;
+      border: 1.5px solid var(--border);
+      color: var(--muted);
       background: transparent;
       letter-spacing: 0.04em;
-      transition: background 0.2s, color 0.2s;
+      transition: border-color 0.15s, color 0.15s;
     }
-    .pill:hover { background: var(--black); color: var(--white); cursor: default; }
-
-    /* ── PROJECTS ── */
-    #projects { background: var(--accent-dim); border-top: 1.5px solid var(--black); border-bottom: 1.5px solid var(--black); }
-    .proj-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; }
-    .proj-card {
-      background: var(--white);
-      border: 1.5px solid var(--black);
-      overflow: hidden;
-    }
-    .proj-header {
-      background: var(--black);
-      padding: 0.6rem 1rem;
-      display: flex;
-      align-items: center;
-      gap: 0.5rem;
-    }
-    .proj-dot { width: 10px; height: 10px; border-radius: 50%; background: #444; }
-    .proj-dot:first-child { background: #666; }
-    .proj-filename {
-      margin-left: auto;
-      font-family: var(--mono);
-      font-size: 0.65rem;
-      color: #888;
-    }
-    .proj-body { padding: 1.75rem; }
-    .proj-title { font-size: 1.2rem; font-weight: 700; margin-bottom: 0.5rem; }
-    .proj-lang {
-      display: inline-block;
-      font-family: var(--mono);
-      font-size: 0.65rem;
-      padding: 0.2rem 0.5rem;
-      background: var(--accent-dim);
-      color: var(--accent);
-      border: 1px solid var(--accent);
-      margin-bottom: 1rem;
-      letter-spacing: 0.06em;
-    }
-    .proj-desc { font-size: 0.88rem; color: var(--mid); line-height: 1.65; margin-bottom: 1.25rem; }
-    .proj-link {
-      font-family: var(--mono);
-      font-size: 0.75rem;
-      font-weight: 700;
-      text-decoration: none;
-      color: var(--black);
-      border-bottom: 1.5px solid var(--black);
-      padding-bottom: 1px;
-      transition: color 0.2s, border-color 0.2s;
-    }
-    .proj-link:hover { color: var(--accent); border-color: var(--accent); }
+    .pill:hover { border-color: var(--border2); color: var(--text); cursor: default; }
 
     /* ── ACHIEVEMENTS ── */
-    #achievements { border-bottom: 1.5px solid var(--black); }
-    .ach-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 0; }
-    .ach-item {
-      padding: 2rem 1.75rem;
-      border-right: 1.5px solid var(--black);
-      border-bottom: 1.5px solid var(--black);
+    #achievements { background: var(--bg2); border-bottom: 1.5px solid var(--border); }
+    .ach-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      border: 1.5px solid var(--border);
+      background: var(--border);
+      gap: 1px;
     }
-    .ach-item:nth-child(3n) { border-right: none; }
-    .ach-item:nth-child(4), .ach-item:nth-child(5), .ach-item:nth-child(6) { border-bottom: none; }
-    .ach-icon { font-size: 1.6rem; margin-bottom: 0.75rem; }
-    .ach-text { font-size: 0.95rem; font-weight: 600; }
+    .ach-item {
+      background: var(--bg2);
+      padding: 2rem 1.75rem;
+    }
+    .ach-num {
+      font-family: var(--mono);
+      font-size: 0.62rem;
+      color: var(--dim);
+      letter-spacing: 0.1em;
+      margin-bottom: 0.5rem;
+    }
+    .ach-text { font-size: 0.95rem; font-weight: 600; color: var(--text); }
 
     /* ── CONTACT ── */
-    #contact { background: var(--black); color: var(--white); text-align: center; }
-    #contact .section-label { color: #666; }
-    #contact .section-title { color: var(--white); margin-bottom: 1rem; }
-    .contact-sub { color: #888; font-size: 1rem; margin-bottom: 3rem; max-width: 400px; margin-left: auto; margin-right: auto; }
-    .contact-links { display: flex; justify-content: center; gap: 1.5rem; flex-wrap: wrap; }
+    #contact { background: var(--bg); border-bottom: 1.5px solid var(--border); }
+    .contact-inner {
+      max-width: 600px;
+    }
+    .contact-sub { color: var(--muted); font-size: 0.95rem; margin-bottom: 3rem; line-height: 1.8; }
+    .contact-links { display: flex; gap: 1rem; flex-wrap: wrap; }
     .contact-link {
       display: flex; align-items: center; gap: 0.5rem;
       font-family: var(--mono);
-      font-size: 0.82rem;
-      color: var(--white);
+      font-size: 0.75rem;
+      color: var(--muted);
       text-decoration: none;
-      border: 1px solid #333;
-      padding: 0.8rem 1.5rem;
-      transition: border-color 0.2s, color 0.2s;
+      border: 1.5px solid var(--border);
+      padding: 0.7rem 1.25rem;
+      transition: border-color 0.15s, color 0.15s;
     }
-    .contact-link:hover { border-color: var(--accent); color: var(--accent); }
+    .contact-link:hover { border-color: var(--border2); color: var(--white); }
 
     /* ── FOOTER ── */
     footer {
-      background: #050505;
-      color: #333;
+      background: #0a0a0a;
+      color: var(--dim);
       text-align: center;
       padding: 1.5rem;
       font-family: var(--mono);
-      font-size: 0.7rem;
-      letter-spacing: 0.06em;
-      border-top: 1px solid #1a1a1a;
+      font-size: 0.65rem;
+      letter-spacing: 0.08em;
+      border-top: 1px solid var(--border);
     }
 
     /* ── RESPONSIVE ── */
     @media (max-width: 768px) {
-      nav { padding: 1rem 1.25rem; }
-      .nav-links { gap: 1.2rem; }
+      nav { padding: 0.9rem 1.25rem; }
+      .nav-links { gap: 1.25rem; }
       .hero { grid-template-columns: 1fr; min-height: auto; }
-      .hero-text { padding: 3rem 1.25rem; border-right: none; border-bottom: 1.5px solid var(--black); }
+      .hero-left { padding: 3rem 1.25rem; border-right: none; border-bottom: 1.5px solid var(--border); }
       .hero-right { padding: 2.5rem 1.25rem; }
       .quick-links { grid-template-columns: 1fr 1fr; }
-      .quick-link { border-bottom: 1.5px solid var(--black); }
       section { padding: 3.5rem 1.25rem; }
       .exp-grid, .proj-grid, .skills-layout { grid-template-columns: 1fr; }
       .ach-grid { grid-template-columns: 1fr 1fr; }
-      .ach-item:nth-child(2n) { border-right: none; }
-      .ach-item:nth-child(3n) { border-right: 1.5px solid var(--black); }
     }
 
     @media (prefers-reduced-motion: reduce) {
@@ -378,7 +381,6 @@
 </head>
 <body>
 
-  <!-- NAV -->
   <nav>
     <a href="#" class="nav-logo">AMC</a>
     <ul class="nav-links">
@@ -389,12 +391,11 @@
     </ul>
   </nav>
 
-  <!-- HERO -->
-  <section class="hero" style="padding:0;">
-    <div class="hero-text">
-      <p class="hero-eyebrow">// CS Student · AI Intern · Data Nerd</p>
-      <h1 class="hero-name">Alex<br>Muñoz<span>-</span>Craig</h1>
-      <p class="hero-sub">Freshman at Pace University studying Computer Science. I build things with Python and Java, work with data, and love finding patterns in complex problems.</p>
+  <div class="hero">
+    <div class="hero-left">
+      <p class="hero-eyebrow">// CS Student · AI Intern · Data</p>
+      <h1>Alex<br>Muñoz-<br>Craig</h1>
+      <p class="hero-sub">Freshman at Pace University studying Computer Science. I build things with Python and Java, analyze data, and find patterns in complex problems.</p>
       <div class="hero-cta-row">
         <a href="#contact" class="btn btn-primary">Get in touch ↗</a>
         <a href="#projects" class="btn btn-outline">View projects</a>
@@ -404,7 +405,7 @@
       <div class="hero-stats">
         <div class="stat-card">
           <div class="stat-num">3.7</div>
-          <div class="stat-label">High school GPA</div>
+          <div class="stat-label">GPA</div>
         </div>
         <div class="stat-card">
           <div class="stat-num">Top 3%</div>
@@ -416,27 +417,24 @@
         </div>
         <div class="stat-card">
           <div class="stat-num">2029</div>
-          <div class="stat-label">Graduation year</div>
+          <div class="stat-label">Graduation</div>
         </div>
       </div>
-      <div class="hero-location">📍 <span>Manhattan, NY</span> · Pace University</div>
+      <div class="hero-location">📍 Manhattan, NY · Pace University</div>
     </div>
-  </section>
-
-  <!-- QUICK LINKS -->
-  <div class="quick-links">
-    <a href="#experience" class="quick-link">Experience <span class="arrow">↗</span></a>
-    <a href="#projects" class="quick-link">Projects <span class="arrow">↗</span></a>
-    <a href="#skills" class="quick-link">Skills <span class="arrow">↗</span></a>
-    <a href="#contact" class="quick-link">Contact <span class="arrow">↗</span></a>
   </div>
 
-  <!-- EXPERIENCE -->
-  <section id="experience">
-    <div class="section-label">// 02 — Timeline</div>
-    <h2 class="section-title">Experience</h2>
-    <div class="exp-grid">
+  <div class="quick-links">
+    <a href="#experience" class="quick-link">Experience ↗</a>
+    <a href="#projects" class="quick-link">Projects ↗</a>
+    <a href="#skills" class="quick-link">Skills ↗</a>
+    <a href="#contact" class="quick-link">Contact ↗</a>
+  </div>
 
+  <section id="experience">
+    <div class="section-label">// Experience</div>
+    <h2 class="section-title">Work & Internships</h2>
+    <div class="exp-grid">
       <div class="exp-card">
         <span class="exp-tag">Current · 2026</span>
         <div class="exp-org">AI Innovation & Exploration Intern</div>
@@ -448,55 +446,47 @@
           <li>Career development and technical skill-building workshops</li>
         </ul>
       </div>
-
       <div class="exp-card">
         <span class="exp-tag">Internship · 2024</span>
         <div class="exp-org">Brown University</div>
         <div class="exp-role">July – August 2024 · Research & Data Analysis Intern</div>
         <ul class="exp-bullets">
           <li>Collected and analyzed sea surface temperature datasets</li>
-          <li>Wrote Python scripts for data visualizations and analytical graphs</li>
-          <li>Partnered with the Dept. of Earth & Planetary Sciences</li>
+          <li>Wrote Python scripts for data visualizations and graphs</li>
+          <li>Partnered with Dept. of Earth & Planetary Sciences</li>
           <li>Presented a poster on research findings</li>
         </ul>
       </div>
-
       <div class="exp-card">
-        <span class="exp-tag">Leadership · 2023–2024</span>
+        <span class="exp-tag">Leadership · 2023–24</span>
         <div class="exp-org">Freshman Orientation Leader</div>
         <div class="exp-role">Summer 2023 – Summer 2024 · Peer Leader & Organizer</div>
         <ul class="exp-bullets">
           <li>Guided incoming students through orientation activities</li>
-          <li>Led tours, facilitated discussions and events</li>
+          <li>Led tours, facilitated group discussions and events</li>
           <li>Created a welcoming environment for students and parents</li>
         </ul>
       </div>
-
       <div class="exp-card">
-        <span class="exp-tag">Education · 2023–2025</span>
+        <span class="exp-tag">Education · 2023–25</span>
         <div class="exp-org">Peer Tutor & SAT Coordinator</div>
         <div class="exp-role">Sept 2023 – May 2025 · Hope High School</div>
         <ul class="exp-bullets">
           <li>One-on-one tutoring in math and physics</li>
-          <li>Strengthened analytical and study skills in every student</li>
+          <li>Strengthened analytical and study skills for every student</li>
           <li>Coordinated SAT preparation program</li>
-          <li>40+ hours of tutoring logged</li>
         </ul>
       </div>
-
     </div>
   </section>
 
-  <!-- PROJECTS -->
   <section id="projects">
-    <div class="section-label">// 03 — Built things</div>
-    <h2 class="section-title">Projects</h2>
+    <div class="section-label">// Projects</div>
+    <h2 class="section-title">Built Things</h2>
     <div class="proj-grid">
-
       <div class="proj-card">
-        <div class="proj-header">
-          <div class="proj-dot"></div>
-          <div class="proj-dot"></div>
+        <div class="proj-bar">
+          <div class="dot"></div><div class="dot"></div>
           <span class="proj-filename">RecipeBox.java</span>
         </div>
         <div class="proj-body">
@@ -506,31 +496,27 @@
           <a href="https://github.com/bmcraig2007" class="proj-link" target="_blank">View on GitHub →</a>
         </div>
       </div>
-
       <div class="proj-card">
-        <div class="proj-header">
-          <div class="proj-dot"></div>
-          <div class="proj-dot"></div>
+        <div class="proj-bar">
+          <div class="dot"></div><div class="dot"></div>
           <span class="proj-filename">temp_analysis.py</span>
         </div>
         <div class="proj-body">
           <h3 class="proj-title">Sea Surface Temp Analysis</h3>
           <span class="proj-lang">Python · Data Visualization</span>
-          <p class="proj-desc">Research project at Brown University analyzing sea surface temperature datasets. Produced data visualizations and analytical graphs, contributing to a poster presentation for the Dept. of Earth & Planetary Sciences.</p>
+          <p class="proj-desc">Research project at Brown University analyzing sea surface temperature datasets. Produced visualizations and graphs contributing to a poster presentation with the Dept. of Earth & Planetary Sciences.</p>
           <a href="#contact" class="proj-link">Get in touch to learn more →</a>
         </div>
       </div>
-
     </div>
   </section>
 
-  <!-- SKILLS -->
   <section id="skills">
-    <div class="section-label">// 04 — Toolbox</div>
-    <h2 class="section-title">Skills</h2>
+    <div class="section-label">// Skills</div>
+    <h2 class="section-title">Toolbox</h2>
     <div class="skills-layout">
       <div>
-        <p class="skills-intro">I work primarily in Python and Java, with a focus on data analysis, visualization, and building clean, functional tools. Always learning — currently exploring AI and machine learning.</p>
+        <p class="skills-intro">I work primarily in Python and Java, focusing on data analysis, visualization, and building clean functional tools. Always learning — currently exploring AI and machine learning.</p>
       </div>
       <div class="skill-groups">
         <div>
@@ -568,53 +554,51 @@
     </div>
   </section>
 
-  <!-- ACHIEVEMENTS -->
   <section id="achievements">
-    <div class="section-label">// 05 — Recognition</div>
+    <div class="section-label">// Recognition</div>
     <h2 class="section-title">Achievements</h2>
     <div class="ach-grid">
       <div class="ach-item">
-        <div class="ach-icon">🏆</div>
+        <div class="ach-num">01</div>
         <div class="ach-text">3× Employee of the Month</div>
       </div>
       <div class="ach-item">
-        <div class="ach-icon">📚</div>
+        <div class="ach-num">02</div>
         <div class="ach-text">2× AP Scholar Award</div>
       </div>
       <div class="ach-item">
-        <div class="ach-icon">🎓</div>
+        <div class="ach-num">03</div>
         <div class="ach-text">Top 3% of Graduating Class</div>
       </div>
       <div class="ach-item">
-        <div class="ach-icon">🗺️</div>
+        <div class="ach-num">04</div>
         <div class="ach-text">Neighborhood Expert Certification</div>
       </div>
       <div class="ach-item">
-        <div class="ach-icon">🤝</div>
-        <div class="ach-text">20+ Hours Volunteer Work</div>
+        <div class="ach-num">05</div>
+        <div class="ach-text">20+ Hours of Volunteer Work</div>
       </div>
       <div class="ach-item">
-        <div class="ach-icon">✏️</div>
+        <div class="ach-num">06</div>
         <div class="ach-text">40+ Hours of Tutoring</div>
       </div>
     </div>
   </section>
 
-  <!-- CONTACT -->
   <section id="contact">
-    <div class="section-label">// 06 — Let's connect</div>
-    <h2 class="section-title">Get in Touch</h2>
-    <p class="contact-sub">Open to internships, collaborations, and cool projects.</p>
-    <div class="contact-links">
-      <a href="mailto:bmcraig2007@gmail.com" class="contact-link">✉ bmcraig2007@gmail.com</a>
-      <a href="https://github.com/bmcraig2007" target="_blank" class="contact-link">⌥ GitHub</a>
-      <a href="https://www.linkedin.com/in/alexmc2007" target="_blank" class="contact-link"> [in] LinkedIn</a>
+    <div class="contact-inner">
+      <div class="section-label">// Contact</div>
+      <h2 class="section-title">Get in Touch</h2>
+      <p class="contact-sub">Open to internships, collaborations, and interesting projects. Drop me a line.</p>
+      <div class="contact-links">
+        <a href="mailto:bmcraig2007@gmail.com" class="contact-link">✉ bmcraig2007@gmail.com</a>
+        <a href="https://www.linkedin.com/in/alexmc2007" target="_blank" class="contact-link"> [in] LinkedIn</a>
+        <a href="https://github.com/bmcraig2007" target="_blank" class="contact-link">⌥ GitHub</a>
+      </div>
     </div>
   </section>
 
-  <footer>
-    © 2026 Alex Muñoz-Craig · Built for GitHub Pages
-  </footer>
+  <footer>© 2026 Alex Muñoz-Craig · Built for GitHub Pages</footer>
 
 </body>
 </html>
