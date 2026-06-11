@@ -1,0 +1,620 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Alex Muñoz-Craig</title>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --black: #0a0a0a;
+      --white: #f5f4f0;
+      --accent: #2563ff;
+      --accent-dim: #dce8ff;
+      --mid: #6b6b6b;
+      --border: #d4d2cc;
+      --mono: 'Space Mono', monospace;
+      --sans: 'Space Grotesk', sans-serif;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: var(--sans);
+      background: var(--white);
+      color: var(--black);
+      line-height: 1.6;
+    }
+
+    /* ── NAV ── */
+    nav {
+      position: sticky; top: 0; z-index: 100;
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 1rem 2.5rem;
+      background: var(--white);
+      border-bottom: 1.5px solid var(--black);
+    }
+    .nav-logo {
+      font-family: var(--mono);
+      font-size: 0.85rem;
+      font-weight: 700;
+      letter-spacing: 0.05em;
+      text-decoration: none;
+      color: var(--black);
+    }
+    .nav-links { display: flex; gap: 2rem; list-style: none; }
+    .nav-links a {
+      font-size: 0.85rem;
+      font-weight: 500;
+      text-decoration: none;
+      color: var(--black);
+      letter-spacing: 0.04em;
+      transition: color 0.2s;
+    }
+    .nav-links a:hover { color: var(--accent); }
+
+    /* ── HERO ── */
+    .hero {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      min-height: 90vh;
+      border-bottom: 1.5px solid var(--black);
+    }
+    .hero-text {
+      padding: 5rem 3rem 4rem 2.5rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      border-right: 1.5px solid var(--black);
+    }
+    .hero-eyebrow {
+      font-family: var(--mono);
+      font-size: 0.75rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 1.25rem;
+    }
+    .hero-name {
+      font-size: clamp(3rem, 6vw, 5.5rem);
+      font-weight: 700;
+      line-height: 1.0;
+      letter-spacing: -0.02em;
+      margin-bottom: 1.5rem;
+    }
+    .hero-name span { color: var(--accent); }
+    .hero-sub {
+      font-size: 1.1rem;
+      color: var(--mid);
+      max-width: 400px;
+      margin-bottom: 2.5rem;
+      line-height: 1.7;
+    }
+    .hero-cta-row { display: flex; gap: 1rem; flex-wrap: wrap; }
+    .btn {
+      display: inline-block;
+      padding: 0.75rem 1.5rem;
+      font-family: var(--mono);
+      font-size: 0.8rem;
+      font-weight: 700;
+      letter-spacing: 0.06em;
+      text-decoration: none;
+      border: 1.5px solid var(--black);
+      transition: background 0.2s, color 0.2s;
+      cursor: pointer;
+    }
+    .btn-primary { background: var(--black); color: var(--white); }
+    .btn-primary:hover { background: var(--accent); border-color: var(--accent); }
+    .btn-outline { background: transparent; color: var(--black); }
+    .btn-outline:hover { background: var(--black); color: var(--white); }
+
+    .hero-right {
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      padding: 3rem 2.5rem;
+      background: var(--black);
+      color: var(--white);
+      position: relative;
+      overflow: hidden;
+    }
+    .hero-stats {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 2px;
+      margin-bottom: 2rem;
+    }
+    .stat-card {
+      background: #161616;
+      padding: 1.5rem;
+      border: 1px solid #2a2a2a;
+    }
+    .stat-num {
+      font-family: var(--mono);
+      font-size: 2.2rem;
+      font-weight: 700;
+      color: var(--accent);
+      line-height: 1;
+      margin-bottom: 0.4rem;
+    }
+    .stat-label {
+      font-size: 0.75rem;
+      color: #888;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+    }
+    .hero-location {
+      font-family: var(--mono);
+      font-size: 0.75rem;
+      color: #555;
+      letter-spacing: 0.08em;
+    }
+    .hero-location span { color: var(--accent); }
+
+    /* ── QUICK LINKS ── */
+    .quick-links {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      border-bottom: 1.5px solid var(--black);
+    }
+    .quick-link {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 1.1rem 1.5rem;
+      text-decoration: none;
+      color: var(--black);
+      font-weight: 600;
+      font-size: 0.9rem;
+      border-right: 1.5px solid var(--black);
+      background: var(--white);
+      transition: background 0.2s, color 0.2s;
+    }
+    .quick-link:last-child { border-right: none; }
+    .quick-link:hover { background: var(--black); color: var(--white); }
+    .quick-link .arrow { font-size: 1rem; }
+
+    /* ── SECTION COMMON ── */
+    section { padding: 5rem 2.5rem; }
+    .section-label {
+      font-family: var(--mono);
+      font-size: 0.7rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 0.5rem;
+    }
+    .section-title {
+      font-size: clamp(2rem, 4vw, 3rem);
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      margin-bottom: 3rem;
+    }
+
+    /* ── EXPERIENCE ── */
+    #experience { background: var(--black); color: var(--white); }
+    #experience .section-title { color: var(--white); }
+    .exp-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 2px; }
+    .exp-card {
+      background: #111;
+      padding: 2rem;
+      border: 1px solid #222;
+      position: relative;
+      transition: border-color 0.2s;
+    }
+    .exp-card:hover { border-color: var(--accent); }
+    .exp-tag {
+      display: inline-block;
+      font-family: var(--mono);
+      font-size: 0.65rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      padding: 0.25rem 0.6rem;
+      background: var(--accent);
+      color: var(--white);
+      margin-bottom: 1rem;
+    }
+    .exp-org { font-size: 1.2rem; font-weight: 700; margin-bottom: 0.25rem; }
+    .exp-role {
+      font-family: var(--mono);
+      font-size: 0.75rem;
+      color: #888;
+      margin-bottom: 1.25rem;
+    }
+    .exp-bullets { list-style: none; }
+    .exp-bullets li {
+      font-size: 0.88rem;
+      color: #bbb;
+      padding: 0.3rem 0;
+      padding-left: 1rem;
+      position: relative;
+      line-height: 1.5;
+    }
+    .exp-bullets li::before {
+      content: '—';
+      position: absolute; left: 0;
+      color: var(--accent);
+    }
+
+    /* ── SKILLS ── */
+    #skills { border-bottom: 1.5px solid var(--black); }
+    .skills-layout { display: grid; grid-template-columns: 1fr 2fr; gap: 4rem; }
+    .skills-intro { font-size: 1rem; color: var(--mid); line-height: 1.8; }
+    .skill-groups { display: flex; flex-direction: column; gap: 2rem; }
+    .skill-group-title {
+      font-family: var(--mono);
+      font-size: 0.7rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--mid);
+      margin-bottom: 0.75rem;
+    }
+    .skill-pills { display: flex; flex-wrap: wrap; gap: 0.5rem; }
+    .pill {
+      font-family: var(--mono);
+      font-size: 0.78rem;
+      padding: 0.4rem 0.9rem;
+      border: 1.5px solid var(--black);
+      background: transparent;
+      letter-spacing: 0.04em;
+      transition: background 0.2s, color 0.2s;
+    }
+    .pill:hover { background: var(--black); color: var(--white); cursor: default; }
+
+    /* ── PROJECTS ── */
+    #projects { background: var(--accent-dim); border-top: 1.5px solid var(--black); border-bottom: 1.5px solid var(--black); }
+    .proj-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; }
+    .proj-card {
+      background: var(--white);
+      border: 1.5px solid var(--black);
+      overflow: hidden;
+    }
+    .proj-header {
+      background: var(--black);
+      padding: 0.6rem 1rem;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+    .proj-dot { width: 10px; height: 10px; border-radius: 50%; background: #444; }
+    .proj-dot:first-child { background: #666; }
+    .proj-filename {
+      margin-left: auto;
+      font-family: var(--mono);
+      font-size: 0.65rem;
+      color: #888;
+    }
+    .proj-body { padding: 1.75rem; }
+    .proj-title { font-size: 1.2rem; font-weight: 700; margin-bottom: 0.5rem; }
+    .proj-lang {
+      display: inline-block;
+      font-family: var(--mono);
+      font-size: 0.65rem;
+      padding: 0.2rem 0.5rem;
+      background: var(--accent-dim);
+      color: var(--accent);
+      border: 1px solid var(--accent);
+      margin-bottom: 1rem;
+      letter-spacing: 0.06em;
+    }
+    .proj-desc { font-size: 0.88rem; color: var(--mid); line-height: 1.65; margin-bottom: 1.25rem; }
+    .proj-link {
+      font-family: var(--mono);
+      font-size: 0.75rem;
+      font-weight: 700;
+      text-decoration: none;
+      color: var(--black);
+      border-bottom: 1.5px solid var(--black);
+      padding-bottom: 1px;
+      transition: color 0.2s, border-color 0.2s;
+    }
+    .proj-link:hover { color: var(--accent); border-color: var(--accent); }
+
+    /* ── ACHIEVEMENTS ── */
+    #achievements { border-bottom: 1.5px solid var(--black); }
+    .ach-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 0; }
+    .ach-item {
+      padding: 2rem 1.75rem;
+      border-right: 1.5px solid var(--black);
+      border-bottom: 1.5px solid var(--black);
+    }
+    .ach-item:nth-child(3n) { border-right: none; }
+    .ach-item:nth-child(4), .ach-item:nth-child(5), .ach-item:nth-child(6) { border-bottom: none; }
+    .ach-icon { font-size: 1.6rem; margin-bottom: 0.75rem; }
+    .ach-text { font-size: 0.95rem; font-weight: 600; }
+
+    /* ── CONTACT ── */
+    #contact { background: var(--black); color: var(--white); text-align: center; }
+    #contact .section-label { color: #666; }
+    #contact .section-title { color: var(--white); margin-bottom: 1rem; }
+    .contact-sub { color: #888; font-size: 1rem; margin-bottom: 3rem; max-width: 400px; margin-left: auto; margin-right: auto; }
+    .contact-links { display: flex; justify-content: center; gap: 1.5rem; flex-wrap: wrap; }
+    .contact-link {
+      display: flex; align-items: center; gap: 0.5rem;
+      font-family: var(--mono);
+      font-size: 0.82rem;
+      color: var(--white);
+      text-decoration: none;
+      border: 1px solid #333;
+      padding: 0.8rem 1.5rem;
+      transition: border-color 0.2s, color 0.2s;
+    }
+    .contact-link:hover { border-color: var(--accent); color: var(--accent); }
+
+    /* ── FOOTER ── */
+    footer {
+      background: #050505;
+      color: #333;
+      text-align: center;
+      padding: 1.5rem;
+      font-family: var(--mono);
+      font-size: 0.7rem;
+      letter-spacing: 0.06em;
+      border-top: 1px solid #1a1a1a;
+    }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 768px) {
+      nav { padding: 1rem 1.25rem; }
+      .nav-links { gap: 1.2rem; }
+      .hero { grid-template-columns: 1fr; min-height: auto; }
+      .hero-text { padding: 3rem 1.25rem; border-right: none; border-bottom: 1.5px solid var(--black); }
+      .hero-right { padding: 2.5rem 1.25rem; }
+      .quick-links { grid-template-columns: 1fr 1fr; }
+      .quick-link { border-bottom: 1.5px solid var(--black); }
+      section { padding: 3.5rem 1.25rem; }
+      .exp-grid, .proj-grid, .skills-layout { grid-template-columns: 1fr; }
+      .ach-grid { grid-template-columns: 1fr 1fr; }
+      .ach-item:nth-child(2n) { border-right: none; }
+      .ach-item:nth-child(3n) { border-right: 1.5px solid var(--black); }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after { transition: none !important; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav>
+    <a href="#" class="nav-logo">AMC</a>
+    <ul class="nav-links">
+      <li><a href="#experience">Experience</a></li>
+      <li><a href="#projects">Projects</a></li>
+      <li><a href="#skills">Skills</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+  </nav>
+
+  <!-- HERO -->
+  <section class="hero" style="padding:0;">
+    <div class="hero-text">
+      <p class="hero-eyebrow">// CS Student · AI Intern · Data Nerd</p>
+      <h1 class="hero-name">Alex<br>Muñoz<span>-</span>Craig</h1>
+      <p class="hero-sub">Freshman at Pace University studying Computer Science. I build things with Python and Java, work with data, and love finding patterns in complex problems.</p>
+      <div class="hero-cta-row">
+        <a href="#contact" class="btn btn-primary">Get in touch ↗</a>
+        <a href="#projects" class="btn btn-outline">View projects</a>
+      </div>
+    </div>
+    <div class="hero-right">
+      <div class="hero-stats">
+        <div class="stat-card">
+          <div class="stat-num">3.7</div>
+          <div class="stat-label">High school GPA</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-num">Top 3%</div>
+          <div class="stat-label">Graduating class</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-num">40+</div>
+          <div class="stat-label">Hours tutoring</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-num">2029</div>
+          <div class="stat-label">Graduation year</div>
+        </div>
+      </div>
+      <div class="hero-location">📍 <span>Manhattan, NY</span> · Pace University</div>
+    </div>
+  </section>
+
+  <!-- QUICK LINKS -->
+  <div class="quick-links">
+    <a href="#experience" class="quick-link">Experience <span class="arrow">↗</span></a>
+    <a href="#projects" class="quick-link">Projects <span class="arrow">↗</span></a>
+    <a href="#skills" class="quick-link">Skills <span class="arrow">↗</span></a>
+    <a href="#contact" class="quick-link">Contact <span class="arrow">↗</span></a>
+  </div>
+
+  <!-- EXPERIENCE -->
+  <section id="experience">
+    <div class="section-label">// 02 — Timeline</div>
+    <h2 class="section-title">Experience</h2>
+    <div class="exp-grid">
+
+      <div class="exp-card">
+        <span class="exp-tag">Current · 2026</span>
+        <div class="exp-org">AI Innovation & Exploration Intern</div>
+        <div class="exp-role">June 7 – June 21, 2026 · AIIE Program</div>
+        <ul class="exp-bullets">
+          <li>Selected for a competitive AI and technology development program</li>
+          <li>Intensive training in Python programming and GitHub workflows</li>
+          <li>Exploring ML concepts and emerging AI technologies</li>
+          <li>Career development and technical skill-building workshops</li>
+        </ul>
+      </div>
+
+      <div class="exp-card">
+        <span class="exp-tag">Internship · 2024</span>
+        <div class="exp-org">Brown University</div>
+        <div class="exp-role">July – August 2024 · Research & Data Analysis Intern</div>
+        <ul class="exp-bullets">
+          <li>Collected and analyzed sea surface temperature datasets</li>
+          <li>Wrote Python scripts for data visualizations and analytical graphs</li>
+          <li>Partnered with the Dept. of Earth & Planetary Sciences</li>
+          <li>Presented a poster on research findings</li>
+        </ul>
+      </div>
+
+      <div class="exp-card">
+        <span class="exp-tag">Leadership · 2023–2024</span>
+        <div class="exp-org">Freshman Orientation Leader</div>
+        <div class="exp-role">Summer 2023 – Summer 2024 · Peer Leader & Organizer</div>
+        <ul class="exp-bullets">
+          <li>Guided incoming students through orientation activities</li>
+          <li>Led tours, facilitated discussions and events</li>
+          <li>Created a welcoming environment for students and parents</li>
+        </ul>
+      </div>
+
+      <div class="exp-card">
+        <span class="exp-tag">Education · 2023–2025</span>
+        <div class="exp-org">Peer Tutor & SAT Coordinator</div>
+        <div class="exp-role">Sept 2023 – May 2025 · Hope High School</div>
+        <ul class="exp-bullets">
+          <li>One-on-one tutoring in math and physics</li>
+          <li>Strengthened analytical and study skills in every student</li>
+          <li>Coordinated SAT preparation program</li>
+          <li>40+ hours of tutoring logged</li>
+        </ul>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- PROJECTS -->
+  <section id="projects">
+    <div class="section-label">// 03 — Built things</div>
+    <h2 class="section-title">Projects</h2>
+    <div class="proj-grid">
+
+      <div class="proj-card">
+        <div class="proj-header">
+          <div class="proj-dot"></div>
+          <div class="proj-dot"></div>
+          <span class="proj-filename">RecipeBox.java</span>
+        </div>
+        <div class="proj-body">
+          <h3 class="proj-title">Digital Recipe Box</h3>
+          <span class="proj-lang">Java · OOP</span>
+          <p class="proj-desc">Console-based recipe management app built with object-oriented principles. Features search, favorites, and full recipe navigation. Version-controlled via GitHub, with a React Native implementation in progress.</p>
+          <a href="https://github.com/bmcraig2007" class="proj-link" target="_blank">View on GitHub →</a>
+        </div>
+      </div>
+
+      <div class="proj-card">
+        <div class="proj-header">
+          <div class="proj-dot"></div>
+          <div class="proj-dot"></div>
+          <span class="proj-filename">temp_analysis.py</span>
+        </div>
+        <div class="proj-body">
+          <h3 class="proj-title">Sea Surface Temp Analysis</h3>
+          <span class="proj-lang">Python · Data Visualization</span>
+          <p class="proj-desc">Research project at Brown University analyzing sea surface temperature datasets. Produced data visualizations and analytical graphs, contributing to a poster presentation for the Dept. of Earth & Planetary Sciences.</p>
+          <a href="#contact" class="proj-link">Get in touch to learn more →</a>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- SKILLS -->
+  <section id="skills">
+    <div class="section-label">// 04 — Toolbox</div>
+    <h2 class="section-title">Skills</h2>
+    <div class="skills-layout">
+      <div>
+        <p class="skills-intro">I work primarily in Python and Java, with a focus on data analysis, visualization, and building clean, functional tools. Always learning — currently exploring AI and machine learning.</p>
+      </div>
+      <div class="skill-groups">
+        <div>
+          <div class="skill-group-title">Languages</div>
+          <div class="skill-pills">
+            <span class="pill">Python</span>
+            <span class="pill">Java</span>
+          </div>
+        </div>
+        <div>
+          <div class="skill-group-title">Data & Analysis</div>
+          <div class="skill-pills">
+            <span class="pill">Data Analysis</span>
+            <span class="pill">Data Visualization</span>
+            <span class="pill">Research Methods</span>
+          </div>
+        </div>
+        <div>
+          <div class="skill-group-title">Tools & Workflow</div>
+          <div class="skill-pills">
+            <span class="pill">Git</span>
+            <span class="pill">GitHub</span>
+            <span class="pill">OOP</span>
+          </div>
+        </div>
+        <div>
+          <div class="skill-group-title">Currently Exploring</div>
+          <div class="skill-pills">
+            <span class="pill">React Native</span>
+            <span class="pill">Machine Learning</span>
+            <span class="pill">AI Tools</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ACHIEVEMENTS -->
+  <section id="achievements">
+    <div class="section-label">// 05 — Recognition</div>
+    <h2 class="section-title">Achievements</h2>
+    <div class="ach-grid">
+      <div class="ach-item">
+        <div class="ach-icon">🏆</div>
+        <div class="ach-text">3× Employee of the Month</div>
+      </div>
+      <div class="ach-item">
+        <div class="ach-icon">📚</div>
+        <div class="ach-text">2× AP Scholar Award</div>
+      </div>
+      <div class="ach-item">
+        <div class="ach-icon">🎓</div>
+        <div class="ach-text">Top 3% of Graduating Class</div>
+      </div>
+      <div class="ach-item">
+        <div class="ach-icon">🗺️</div>
+        <div class="ach-text">Neighborhood Expert Certification</div>
+      </div>
+      <div class="ach-item">
+        <div class="ach-icon">🤝</div>
+        <div class="ach-text">20+ Hours Volunteer Work</div>
+      </div>
+      <div class="ach-item">
+        <div class="ach-icon">✏️</div>
+        <div class="ach-text">40+ Hours of Tutoring</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section id="contact">
+    <div class="section-label">// 06 — Let's connect</div>
+    <h2 class="section-title">Get in Touch</h2>
+    <p class="contact-sub">Open to internships, collaborations, and cool projects. Drop me a line.</p>
+    <div class="contact-links">
+      <a href="mailto:bmcraig2007@gmail.com" class="contact-link">✉ bmcraig2007@gmail.com</a>
+      <a href="tel:+14016020728" class="contact-link">📞 +1 (401) 602-0728</a>
+      <a href="https://github.com/bmcraig2007" target="_blank" class="contact-link">⌥ GitHub</a>
+    </div>
+  </section>
+
+  <footer>
+    © 2026 Alex Muñoz-Craig · Built for GitHub Pages
+  </footer>
+
+</body>
+</html>
